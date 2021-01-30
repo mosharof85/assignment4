@@ -1,6 +1,6 @@
 /**
  * Common method for all actions to update calculations
- * all required inputs are targeted by a common class name 'change-item'
+ * all required input fields are targeted by a common class name 'change-item'
  * and unit prices are holding by a custom attribute 'data-unit-price'
  */
 function updateCalculation(){
@@ -12,6 +12,7 @@ function updateCalculation(){
 
     let subTotalValue = 0;
 
+    //loop through all input fields to update sub-total
     document.querySelectorAll('.charge-item').forEach(function (item) {
 
         const unitPrice = parseFloat(item.getAttribute('data-unit-price'));
@@ -32,7 +33,7 @@ function updateCalculation(){
 }
 
 /**
- * update calculations on load
+ * update calculations on page load
  */
 updateCalculation();
 
@@ -46,7 +47,7 @@ document.querySelectorAll('.charge-item').forEach(function (item) {
 })
 
 /**
- * Handling plus/minus buttion actions
+ * Handling plus/minus button actions
  */
 document.querySelectorAll('.plus-minus-btn span').forEach(function (item) {
 
@@ -58,8 +59,10 @@ document.querySelectorAll('.plus-minus-btn span').forEach(function (item) {
 
     item.addEventListener('click', function () {
 
-        //finding button related input by custom attribute 'data-input'
+        //finding button related input's id by custom attribute 'data-input'
         let btnRelatedInputSectorId = item.getAttribute('data-input');
+
+        //targeting related input field
         let btnRelatedInput = document.getElementById(btnRelatedInputSectorId);
 
         //get current existing value in input field
@@ -76,7 +79,7 @@ document.querySelectorAll('.plus-minus-btn span').forEach(function (item) {
         //updating input field by button action
         btnRelatedInput.value = (currentInputValue + btnFactor);
 
-        //update catculations from button action
+        //update catculations after button action
         updateCalculation();
     })
 })
@@ -86,30 +89,37 @@ document.querySelectorAll('.plus-minus-btn span').forEach(function (item) {
  */
 
 document.getElementById('book-now').addEventListener('click', function () {
+
+    //targeting all required fields
     let firstClass = document.getElementById('first-class');
     let economyClass = document.getElementById('economy-class');
     let grandTotal = document.getElementById('grand-total');
 
+    //get first class ticket counts
     let counterFirstClass = 0;
     if(firstClass.value!==""){
         counterFirstClass = parseInt(firstClass.value);
     }
 
+    //get economy class ticket counts
     let counterEconomyClass = 0;
     if(economyClass.value!==""){
         counterEconomyClass = parseInt(economyClass.value);
     }
 
+    //get grand total value
     let counterGrandTotal = 0;
     if(grandTotal.innerText!==""){
         counterGrandTotal = parseInt(grandTotal.innerText);
     }
 
+    //transfer all extracted values to alert box
     let alertBox = document.querySelector('.alert');
     alertBox.querySelector('#alert-first-class').innerText = counterFirstClass;
     alertBox.querySelector('#alert-economy-class').innerText = counterEconomyClass;
     alertBox.querySelector('#alert-grand-total').innerText = counterGrandTotal;
 
+    //popup alert bax
     alertBox.classList.add('active');
 })
 
