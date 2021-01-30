@@ -196,6 +196,17 @@ nav ul li a:hover, a.active{
     padding: 20px 40px;
 }
 
+.alert .allert--title{
+    display: flex;
+    align-items: center;
+}
+
+.alert .allert--title img{
+    width: 30px;
+    height: 20px;
+    margin-right: 20px;
+}
+
 .alert .alert-content p{
     margin-bottom: 10px;
 }

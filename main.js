@@ -101,8 +101,8 @@ document.getElementById('book-now').addEventListener('click', function () {
     }
 
     let counterGrandTotal = 0;
-    if(grandTotal.value!==""){
-        counterGrandTotal = parseInt(grandTotal.value);
+    if(grandTotal.innerText!==""){
+        counterGrandTotal = parseInt(grandTotal.innerText);
     }
 
     let alertBox = document.querySelector('.alert');
